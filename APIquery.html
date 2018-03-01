@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>OUskills: Key Reverse</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+</head>
+
+<body>
+
+    <div id="APIkeyr"></div>
+
+    <script>
+        (function() {
+            var query = "type=secret&length=10"
+            var oudemoAPI = "http://skills.oudemo.com/";
+            $.getJSON(oudemoAPI, query)
+                .done(function(data) {
+                    if (data.status == "success") {
+                        console.log("API request success");
+                        var keyReverse = data.key.split("").reverse().join("");
+                        $("<p>").html(keyReverse).appendTo("#APIkeyr");
+                    } else {
+                        console.log("API request status : fail");
+                    }
+                });
+        })();
+    </script>
+
+</body>
+
+</html>
